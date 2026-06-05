@@ -10,6 +10,8 @@ import {
   Report,
 } from "@/types/report";
 
+import Link from "next/link";
+
 export default function ReportsPage() {
 
   const [reports, setReports] =
@@ -76,7 +78,11 @@ export default function ReportsPage() {
                 key={report.id}
               >
                 <td>
-                  {report.fileName}
+                    <Link
+                        href={`/reports/${report.id}`}
+                    >
+                        {report.fileName}
+                    </Link>
                 </td>
 
                 <td>
