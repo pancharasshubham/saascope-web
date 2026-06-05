@@ -43,8 +43,8 @@ export default function LoginPage() {
         "/dashboard"
       );
 
-    } catch {
-
+    } catch (error) {
+        console.error(error);
       alert(
         "Login failed"
       );
