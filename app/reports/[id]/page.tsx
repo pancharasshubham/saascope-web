@@ -21,6 +21,10 @@ import {
   ReportEvent,
 } from "@/types/report-events";
 
+import {
+  retryReport,
+} from "@/lib/retry-report";
+
 type PageProps = {
   params: Promise<{
     id: string;
@@ -36,8 +40,41 @@ export default function ReportDetailPage({
       null
     );
 
+  const [retrying, setRetrying] =
+  useState(false);
+
   const [events, setEvents] =
   useState<ReportEvent[]>([]);
+
+  async function handleRetry() {
+
+    if (!report) {
+      return;
+    }
+
+    try {
+
+      setRetrying(true);
+
+      await retryReport(
+        report.id
+      );
+
+      window.location.reload();
+
+    } catch (err) {
+
+      console.error(err);
+
+      alert(
+        "Retry failed"
+      );
+
+    } finally {
+
+      setRetrying(false);
+    }
+  }
 
   useEffect(() => {
 
@@ -89,6 +126,20 @@ export default function ReportDetailPage({
     <p>
       Skipped: {report.skipped_count}
     </p>
+
+    {report.status === "failed" && (
+      <button
+        onClick={handleRetry}
+        disabled={retrying}
+        className="bg-red-600 text-white px-4 py-2 rounded mt-4"
+      >
+        {
+          retrying
+            ? "Retrying..."
+            : "Retry Report"
+        }
+      </button>
+    )}
 
     <h2 className="text-xl font-semibold mt-8">
       Vendor Insights
