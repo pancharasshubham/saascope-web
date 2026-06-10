@@ -228,7 +228,7 @@ return ( <div className="space-y-8">
         text-center
       "
     >
-
+      {/* Empty state */}
       <h2 className="text-xl font-semibold">
         No reports yet
       </h2>
