@@ -4,9 +4,8 @@ import Link from "next/link";
 
 import {
   usePathname,
+  useRouter,
 } from "next/navigation";
-
-import { useRouter } from "next/navigation";
 
 import {
   removeToken,
@@ -16,6 +15,9 @@ export default function Sidebar() {
 
   const pathname =
     usePathname();
+
+  const router =
+    useRouter();
 
   const links = [
     {
@@ -28,35 +30,18 @@ export default function Sidebar() {
     },
     {
       href: "/upload",
-      label: "Upload",
+      label: "Upload CSV",
     },
   ];
 
-  const router =
-    useRouter();
+  function handleLogout() {
 
-    function handleLogout() {
+    removeToken();
 
-        removeToken();
-
-        router.push(
-            "/login"
-        );
-    }
-
-    <button
-        onClick={handleLogout}
-        className="
-            mt-auto
-            rounded-md
-            bg-red-600
-            text-white
-            px-3
-            py-2
-        "
-    >
-        Logout
-    </button>
+    router.push(
+      "/login"
+    );
+  }
 
   return (
     <aside
@@ -67,17 +52,34 @@ export default function Sidebar() {
         border-slate-200
         bg-white
         p-6
+        flex
+        flex-col
       "
     >
-      <h1
-        className="
-          text-2xl
-          font-bold
-          mb-8
-        "
-      >
-        SaaScope
-      </h1>
+
+      <div className="mb-10">
+
+        <h1
+          className="
+            text-2xl
+            font-bold
+            text-slate-900
+          "
+        >
+          SaaScope
+        </h1>
+
+        <p
+          className="
+            text-sm
+            text-slate-500
+            mt-1
+          "
+        >
+          SaaS Cost Auditor
+        </p>
+
+      </div>
 
       <nav
         className="
@@ -86,24 +88,86 @@ export default function Sidebar() {
           gap-2
         "
       >
+
         {links.map(
           (link) => (
+
             <Link
               key={link.href}
               href={link.href}
               className={
                 pathname ===
                 link.href
-                  ? "rounded-md bg-slate-900 text-white px-3 py-2"
-                  : "rounded-md px-3 py-2 hover:bg-slate-100"
+                  ? `
+                    rounded-lg
+                    bg-slate-900
+                    text-white
+                    px-4
+                    py-3
+                    font-medium
+                  `
+                  : `
+                    rounded-lg
+                    px-4
+                    py-3
+                    text-slate-700
+                    hover:bg-slate-100
+                  `
               }
             >
               {link.label}
             </Link>
+
           )
         )}
+
       </nav>
+
+      <div className="mt-auto pt-6">
+
+  <div className="border-t border-slate-200 mb-4" />
+
+  <div className="px-4 mb-4">
+
+    <p
+    className="
+      text-xs   
+      text-slate-500
+    "
+  >
+    Workspace
+  </p>
+
+  <p
+    className="
+      text-sm
+      font-medium
+      text-slate-900
+    "
+  >
+    SaaScope
+  </p>
+
+  </div>
+
+  <button
+    onClick={handleLogout}
+    className="
+      w-full
+      text-left
+      rounded-lg
+      px-4
+      py-3
+      text-slate-700
+      hover:bg-slate-100
+      transition
+    "
+  >
+    Sign Out
+  </button>
+
+</div>
+
     </aside>
   );
-  
 }
