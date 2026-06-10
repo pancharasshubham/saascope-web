@@ -13,6 +13,14 @@ import {
   ReportDetail,
 } from "@/types/report-detail";
 
+import {
+  getReportEvents,
+} from "@/lib/report-events";
+
+import {
+  ReportEvent,
+} from "@/types/report-events";
+
 type PageProps = {
   params: Promise<{
     id: string;
@@ -28,6 +36,9 @@ export default function ReportDetailPage({
       null
     );
 
+  const [events, setEvents] =
+  useState<ReportEvent[]>([]);
+
   useEffect(() => {
 
     async function loadReport() {
@@ -35,13 +46,16 @@ export default function ReportDetailPage({
       const { id } =
         await params;
 
-      const data =
-        await getReportDetail(
-          id
-        );
+      const reportData =
+        await getReportDetail(id);
 
-      setReport(
-        data
+      const eventData =
+        await getReportEvents(id);
+
+      setReport(reportData);
+
+      setEvents(
+        eventData.events
       );
     }
 
@@ -113,6 +127,36 @@ export default function ReportDetailPage({
         </div>
       )
     )}
+
+    <h2 className="text-xl font-semibold mt-8">
+      Processing Timeline
+    </h2>
+
+    <div className="mt-4">
+
+      {events.map(
+        (event, index) => (
+
+          <div
+            key={index}
+            className="border rounded p-4 mb-3"
+          >
+            <p className="font-semibold">
+              {event.event_type}
+            </p>
+
+            <p>
+              {
+                new Date(
+                  event.created_at
+                ).toLocaleString()
+              }
+            </p>
+          </div>
+        )
+      )}
+
+    </div>
 
   </div>
 );
