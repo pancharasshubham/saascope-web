@@ -59,7 +59,7 @@ export default function UploadPage() {
   }
 
  return (
-  <div className="max-w-3xl">
+  <div className="max-w-3xl mx-auto pt-8">
 
     <div className="mb-8">
 
