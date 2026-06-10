@@ -39,7 +39,7 @@ export default function Sidebar() {
     removeToken();
 
     router.push(
-      "/login"
+      "/"
     );
   }
 

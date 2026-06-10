@@ -1,5 +1,62 @@
 import Link from "next/link";
 
+<header className="border-b border-slate-200 bg-pink-50">
+
+  <div
+    className="
+      max-w-6xl
+      mx-auto
+      px-6
+      h-16
+      flex
+      items-center
+      justify-between
+    "
+  >
+
+    <Link
+      href="/"
+      className="
+        text-xl
+        font-bold
+      "
+    >
+      SaaScope
+    </Link>
+
+    <div className="flex gap-3">
+
+      <Link
+        href="/"
+        className="
+          px-4
+          py-2
+          rounded-lg
+          hover:bg-slate-100
+        "
+      >
+        Home
+      </Link>
+
+      <Link
+        href="/register"
+        className="
+          bg-slate-900
+          text-white
+          px-4
+          py-2
+          rounded-lg
+        "
+      >
+        Get Started
+      </Link>
+
+    </div>
+
+  </div>
+
+</header>
+
 export default function DemoPage() {
   return (
     <main className="min-h-screen bg-[#F6F8FB]">
