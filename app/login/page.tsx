@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 
 import { login } from "@/lib/auth";
 import { saveToken } from "@/lib/storage";
+import AuthLayout from "@/components/auth-layout";
 
 export default function LoginPage() {
 
@@ -59,68 +60,74 @@ export default function LoginPage() {
 
  return (
   <div className="min-h-screen flex items-center justify-center">
-    <form
-      onSubmit={handleSubmit}
-      className="w-full max-w-md bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col gap-4"
+    <AuthLayout
+      title="Welcome Back"
+      description="Sign in to access your SaaS audits."
     >
-      <h1 className="text-2xl font-semibold">
-        Login
-      </h1>
-
-      <input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="Email"
-        className="border border-slate-300 rounded-md p-2"
-        value={email}
-        onChange={(e) =>
-          setEmail(e.target.value)
-        }
-      />
-
-      <input
-        id="password"
-        name="password"
-        type="password"
-        placeholder="Password"
-        className="border border-slate-300 rounded-md p-2"
-        value={password}
-        onChange={(e) =>
-          setPassword(e.target.value)
-        }
-      />
-
-      <button
-        type="submit"
-        className="bg-slate-900 text-white rounded-md p-2"
+      {/* form */}
+        <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col gap-4"
       >
-        {loading
-          ? "Loading..."
-          : "Login"}
-      </button>
-    </form>
+        <h1 className="text-2xl font-semibold">
+          Login
+        </h1>
 
-    <p
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          className="border border-slate-300 rounded-md p-2"
+          value={email}
+          onChange={(e) =>
+            setEmail(e.target.value)
+          }
+        />
+
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Password"
+          className="border border-slate-300 rounded-md p-2"
+          value={password}
+          onChange={(e) =>
+            setPassword(e.target.value)
+          }
+        />
+
+        <button
+          type="submit"
+          className="bg-slate-900 text-white rounded-md p-2"
+        >
+          {loading
+            ? "Loading..."
+            : "Login"}
+        </button>
+      </form>
+       <p
       className="
         text-center
         text-sm
         text-slate-500
       "
     >   
-      Don&apos;t have an account?
+        Don&apos;t have an account?
 
-    <Link
-      href="/register"
-      className="
-        ml-1
-        text-slate-900
-        font-medium
-      "
-    >
-    Create Account
-    </Link>
-</p>
+      <Link
+        href="/register"
+        className="
+          ml-1
+          text-slate-900
+          font-medium
+        "
+      >
+        Create Account
+      </Link>
+    </p>
+    </AuthLayout>
+    
   </div>
 );
 }

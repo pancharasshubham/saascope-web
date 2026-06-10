@@ -4,6 +4,7 @@ import {
   LoginRequest,
   RegisterRequest,
   AuthResponse,
+  RegisterResponse,
 } from "@/types/auth";
 
 export async function login(
@@ -24,7 +25,7 @@ export async function register(
 ) {
 
   const response =
-    await api.post<AuthResponse>(
+    await api.post<RegisterResponse>(
       "/auth/register",
       data
     );

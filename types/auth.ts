@@ -16,3 +16,12 @@ export type AuthResponse = {
     email: string;
   };
 };
+
+export type RegisterResponse = {
+  message: string;
+
+  user: {
+    id: string;
+    email: string;
+  };
+};
