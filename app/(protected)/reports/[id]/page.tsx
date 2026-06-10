@@ -201,13 +201,33 @@ export default function ReportDetailPage({
       </div>
 
       <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+
         <p className="text-sm text-slate-500">
           Status
         </p>
 
-        <h2 className="text-xl font-semibold mt-2 capitalize">
+        <span
+          className={`
+            inline-flex
+            mt-3
+            px-3
+            py-1
+            rounded-full
+            text-sm
+            font-medium
+
+            ${
+              report.status === "completed"
+                ? "bg-green-100 text-green-700"
+                : report.status === "failed"
+                ? "bg-red-100 text-red-700"
+                : "bg-yellow-100 text-yellow-700"
+            }
+          `}
+        >
           {report.status}
-        </h2>
+        </span>
+
       </div>
 
     </div>
@@ -254,16 +274,29 @@ export default function ReportDetailPage({
                     {vendor.vendor}
                   </h3>
 
-                  <p
-                    className="
-                      text-slate-500
-                      mt-1
-                    "
-                  >
-                    Confidence:
-                    {" "}
-                    {vendor.confidence}
-                  </p>
+                  <div className="mt-2">
+
+                    <span
+                      className={`
+                        px-2
+                        py-1
+                        rounded-full
+                        text-xs
+                        font-medium
+
+                        ${
+                          vendor.confidence === "high"
+                            ? "bg-green-100 text-green-700"
+                            : vendor.confidence === "medium"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : "bg-red-100 text-red-700"
+                        }
+                      `}
+                    >
+                      {vendor.confidence} confidence
+                    </span>
+
+                  </div>
 
                 </div>
 
