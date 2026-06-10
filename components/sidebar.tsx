@@ -6,6 +6,12 @@ import {
   usePathname,
 } from "next/navigation";
 
+import { useRouter } from "next/navigation";
+
+import {
+  removeToken,
+} from "@/lib/storage";
+
 export default function Sidebar() {
 
   const pathname =
@@ -25,6 +31,32 @@ export default function Sidebar() {
       label: "Upload",
     },
   ];
+
+  const router =
+    useRouter();
+
+    function handleLogout() {
+
+        removeToken();
+
+        router.push(
+            "/login"
+        );
+    }
+
+    <button
+        onClick={handleLogout}
+        className="
+            mt-auto
+            rounded-md
+            bg-red-600
+            text-white
+            px-3
+            py-2
+        "
+    >
+        Logout
+    </button>
 
   return (
     <aside
@@ -73,4 +105,5 @@ export default function Sidebar() {
       </nav>
     </aside>
   );
+  
 }
