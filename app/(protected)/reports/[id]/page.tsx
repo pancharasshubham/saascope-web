@@ -76,32 +76,64 @@ export default function ReportDetailPage({
     }
   }
 
+  const [loading, setLoading] =
+    useState(true);
+
+  const [notFound, setNotFound] =
+    useState(false);
+
   useEffect(() => {
 
     async function loadReport() {
 
-      const { id } =
-        await params;
+      try {
 
-      const reportData =
-        await getReportDetail(id);
+        const { id } =
+          await params;
 
-      const eventData =
-        await getReportEvents(id);
+        const reportData =
+          await getReportDetail(id);
 
-      setReport(reportData);
+        const eventData =
+          await getReportEvents(id);
 
-      setEvents(
-        eventData.events
-      );
+        setReport(reportData);
+
+        setEvents(
+          eventData.events
+        );
+      } catch (error) {
+        console.error(error);
+        setNotFound(true);
+        }finally {
+        setLoading(false);
+      }
     }
 
     loadReport();
 
   }, [params]);
 
-  if (!report) {
+    if (loading) {
     return <div>Loading...</div>;
+  }
+
+    if (notFound) {
+      return (
+        <div className="p-6">
+          <h1 className="text-2xl font-semibold">
+            Report not found
+          </h1>
+
+          <p className="text-slate-500 mt-2">
+            This report does not exist.
+          </p>
+        </div>
+      );
+    }
+
+    if (!report) {
+      return null;
   }
 
   return (

@@ -70,7 +70,7 @@ export default function Home() {
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-6 pt-24 pb-20">
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           <div>
 
@@ -93,7 +93,7 @@ export default function Home() {
 
             <h1
               className="
-                text-6xl lg:text-7xl tracking-tight font-bold text-slate-900 leading-tight">
+                text-4xl md:text-6xl lg:text-7xl tracking-tight font-bold text-slate-900 leading-tight">
               Stop Paying For
               Software Nobody Uses.
             </h1>
@@ -291,7 +291,7 @@ export default function Home() {
       </section>
 
       {/* Product Preview */}
-      <section className="py-24">
+      <section className="py-12 md:py-24">
 
         <div className="max-w-7xl mx-auto px-6">
 
@@ -473,7 +473,7 @@ export default function Home() {
               <h3 className="font-semibold mt-2">
                 {step.title}
               </h3>
-              
+
               <p className="text-slate-600 mt-2">
                 {step.desc}
               </p>
