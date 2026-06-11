@@ -3,11 +3,19 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F6F8FB]">
+    <main
+  className="
+    min-h-screen
+    bg-gradient-to-b
+    from-slate-50
+    via-white
+    to-slate-100
+  "
+>
 
       {/* Navbar */}
       <header className="border-b border-slate-200 bg-white">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
           <div>
             <h1 className="text-xl font-bold">
@@ -60,7 +68,7 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto pt-16 pb-8">
+      <section className="max-w-7xl mx-auto px-6 pt-24 pb-20">
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
@@ -85,12 +93,7 @@ export default function Home() {
 
             <h1
               className="
-                text-5xl
-                font-bold
-                text-slate-900
-                leading-tight
-              "
-            >
+                text-6xl lg:text-7xl tracking-tight font-bold text-slate-900 leading-tight">
               Stop Paying For
               Software Nobody Uses.
             </h1>
@@ -237,14 +240,64 @@ export default function Home() {
 
       </section>
 
+      <section className="max-w-7xl mx-auto px-6 pb-24">
+
+        <div
+          className="
+            bg-white
+            border
+            border-slate-200
+            rounded-2xl
+            p-8
+            shadow-sm
+            grid
+            grid-cols-3
+            text-center
+          "
+        >
+
+          <div>
+            <div className="text-4xl font-bold">
+              ₹266K+
+            </div>
+
+            <p className="text-slate-500 text-sm mt-2">
+              Potential Savings Found
+            </p>
+          </div>
+
+            <div>
+              <div className="text-4xl font-bold">
+                3
+              </div>
+
+              <p className="text-slate-500 text-sm mt-2">
+                Reports Generated
+              </p>
+            </div>
+
+          <div>
+              <div className="text-4xl font-bold">
+                8
+              </div>
+
+              <p className="text-slate-500 text-sm mt-2">
+                Optimization Opportunities
+              </p>
+          </div>
+
+        </div>
+
+      </section>
+
       {/* Product Preview */}
-      <section className="py-8">
+      <section className="py-24">
 
         <div className="max-w-7xl mx-auto px-6">
 
-          <div className="text-center mb-12">
+          <div className="text-center mb-20">
 
-          <h2 className="text-4xl font-bold">
+          <h2 className="text-5xl font-bold tracking-tight">
             Detailed Optimization Insights
           </h2>
 
@@ -271,46 +324,43 @@ export default function Home() {
             width={1600}
             height={900}
             className="w-full h-auto"
+            priority
           />
 
         </div>
 
-        <div className="mt-12">
+        <div className="mt-32">
 
-  <div className="text-center mb-8">
+        <div className="text-center mb-8">
 
-    <h2 className="text-3xl font-bold">
-      Actionable Savings Recommendations
-    </h2>
+          <h2 className="text-3xl font-bold tracking-tight">
+            Actionable Savings Recommendations
+          </h2>
 
-    <p className="mt-2 text-slate-600">
-      Understand exactly where SaaS spending can be reduced.
-    </p>
+        </div>
 
-  </div>
+        <div
+          className="
+            rounded-3xl
+            overflow-hidden
+            border
+            border-slate-200
+            shadow-2xl
+            bg-white
+          "
+        >
 
-  <div
-    className="
-      rounded-3xl
-      overflow-hidden
-      border
-      border-slate-200
-      shadow-2xl
-      bg-white
-    "
-  >
+          <Image
+            src="/demo-report-detail.png"
+            alt="SaaScope Report Detail"
+            width={1600}
+            height={900}
+            className="w-full h-auto"
+          />
 
-    <Image
-      src="/demo-report-detail.png"
-      alt="SaaScope Report Detail"
-      width={1600}
-      height={900}
-      className="w-full h-auto"
-    />
+        </div>
 
-  </div>
-
-</div>
+      </div>
 
     </div>
 
@@ -323,9 +373,9 @@ export default function Home() {
           Built For Teams Managing SaaS Spend
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-8 mb-4">
             <h3 className="font-semibold">
               Startup Founders
             </h3>
@@ -336,7 +386,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-8 mb-4">
             <h3 className="font-semibold">
               Finance Teams
             </h3>
@@ -347,7 +397,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-8 mb-4">
             <h3 className="font-semibold">
               Operations Teams
             </h3>
@@ -358,7 +408,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-8 mb-4">
             <h3 className="font-semibold">
               Agencies & SMBs
             </h3>
@@ -383,13 +433,25 @@ export default function Home() {
         <div className="grid md:grid-cols-4 gap-6">
 
           {[
-            "Upload CSV",
-            "Analyze Usage",
-            "Find Waste",
-            "Reduce Costs",
-          ].map((step, index) => (
+            {
+              title: "Upload SaaS Export",
+              desc: "Upload billing and subscription data."
+            },
+            {
+              title: "Analyze Usage",
+              desc: "Review seats, plans and activity."
+            },
+            {
+              title: "Detect Waste",
+              desc: "Find duplicates and unused licenses."
+            },
+            {
+              title: "Take Action",
+              desc: "Reduce costs using recommendations."
+            }
+        ].map((step, index) => (
             <div
-              key={step}
+              key={step.title}
               className="
                 bg-white
                 border
@@ -398,20 +460,23 @@ export default function Home() {
                 p-6
               "
             >
-              <div
+              <p
                 className="
                   text-sm
-                  font-semibold
-                  text-slate-500
-                  mb-4
+                  font-medium
+                  text-slate-400
                 "
               >
                 0{index + 1}
-              </div>
+              </p>
 
-              <h3 className="font-semibold">
-                {step}
+              <h3 className="font-semibold mt-2">
+                {step.title}
               </h3>
+              
+              <p className="text-slate-600 mt-2">
+                {step.desc}
+              </p>
             </div>
           ))}
 
@@ -467,8 +532,8 @@ export default function Home() {
           className="
             bg-slate-900
             text-white
-            rounded-2xl
-            p-12
+            rounded-3xl
+            p-16
             text-center
           "
         >
@@ -502,6 +567,7 @@ export default function Home() {
 
       </section>
 
+      <div className="h-16" />
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white">
 
