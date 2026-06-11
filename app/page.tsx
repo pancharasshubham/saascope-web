@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -59,7 +60,7 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
+      <section className="max-w-6xl mx-auto pt-16 pb-8">
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
@@ -232,58 +233,88 @@ export default function Home() {
 
           </section>
 
-          {/* Product Preview */}
-          <div
-            className="
-              bg-white
-              border
-              border-slate-200
-              rounded-2xl
-              p-8
-              shadow-sm
-            "
-          >
-
-            <p className="text-sm text-slate-500">
-              Potential Savings
-            </p>
-
-            <h2 className="text-4xl font-bold mt-2">
-              ₹147,300
-            </h2>
-
-            <div className="mt-8 space-y-4">
-
-              <div className="flex justify-between">
-                <span>Slack</span>
-                <span>₹35,000</span>
-              </div>
-
-              <div className="flex justify-between">
-                <span>Zoom</span>
-                <span>₹39,000</span>
-              </div>
-
-              <div className="flex justify-between">
-                <span>HubSpot</span>
-                <span>₹73,300</span>
-              </div>
-
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-slate-200">
-
-              <p>✓ Unused Licenses</p>
-              <p>✓ Duplicate Subscriptions</p>
-              <p>✓ Optimization Opportunities</p>
-
-            </div>
-
-          </div>
-
         </div>
 
       </section>
+
+      {/* Product Preview */}
+      <section className="py-8">
+
+        <div className="max-w-7xl mx-auto px-6">
+
+          <div className="text-center mb-12">
+
+          <h2 className="text-4xl font-bold">
+            Detailed Optimization Insights
+          </h2>
+
+          <p className="mt-4 text-slate-600">
+            Understand exactly where your SaaS budget is being wasted.
+          </p>
+
+        </div>
+
+        <div
+          className="
+            rounded-3xl
+            overflow-hidden
+            border
+            border-slate-200
+            shadow-2xl
+            bg-white
+          "
+        >
+
+          <Image
+            src="/demo-report.png"
+            alt="SaaScope Report Detail"
+            width={1600}
+            height={900}
+            className="w-full h-auto"
+          />
+
+        </div>
+
+        <div className="mt-12">
+
+  <div className="text-center mb-8">
+
+    <h2 className="text-3xl font-bold">
+      Actionable Savings Recommendations
+    </h2>
+
+    <p className="mt-2 text-slate-600">
+      Understand exactly where SaaS spending can be reduced.
+    </p>
+
+  </div>
+
+  <div
+    className="
+      rounded-3xl
+      overflow-hidden
+      border
+      border-slate-200
+      shadow-2xl
+      bg-white
+    "
+  >
+
+    <Image
+      src="/demo-report-detail.png"
+      alt="SaaScope Report Detail"
+      width={1600}
+      height={900}
+      className="w-full h-auto"
+    />
+
+  </div>
+
+</div>
+
+    </div>
+
+</section>
 
       {/* Who Is It For */}
       <section className="max-w-6xl mx-auto px-6 pb-24">
