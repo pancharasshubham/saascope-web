@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type AuthLayoutProps = {
   title: string;
   description: string;
@@ -11,8 +13,88 @@ export default function AuthLayout({
 }: AuthLayoutProps) {
   return (
     <div className="min-h-screen bg-[#F6F8FB]">
+      <header
+        className="
+          sticky
+          top-0
+          z-50
+          bg-white/80
+          backdrop-blur
+          border-b
+          border-slate-200
+        "
+      >
 
-      <div className="grid lg:grid-cols-2 min-h-screen">
+        <div
+          className="
+            max-w-7xl
+            mx-auto
+            px-6
+            h-16
+            flex
+            items-center
+            justify-between
+          "
+        >
+
+            <Link
+              href="/"
+              className="
+                text-xl
+                font-bold
+                text-slate-900
+              "
+            >
+              SaaScope
+            </Link>
+
+          <div className="flex items-center gap-3">
+
+            <Link
+              href="/demo"
+              className="
+                px-4
+                py-2
+                rounded-lg
+                text-slate-600
+                hover:bg-slate-100
+              "
+            >
+              Demo
+            </Link>
+
+            <Link
+              href="/login"
+              className="
+                px-4
+                py-2
+                rounded-lg
+                text-slate-600
+                hover:bg-slate-100
+              "
+            >
+              Login
+            </Link>
+
+            <Link
+              href="/register"
+              className="
+                bg-slate-900
+                text-white
+                px-4
+                py-2
+                rounded-lg
+              "
+            >
+              Get Started
+            </Link>
+
+          </div>
+
+        </div>
+
+      </header>
+      <div className="grid lg:grid-cols-2 min-h-[calc(100vh-64px)]">
 
         <div
           className="
