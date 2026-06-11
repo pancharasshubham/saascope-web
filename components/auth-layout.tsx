@@ -41,13 +41,58 @@ export default function AuthLayout({
             opportunities in minutes.
           </p>
 
-          <div className="space-y-4 mt-10">
+          <div
+            className="
+              mt-10
+              bg-white/10
+              border
+              border-white/20
+              rounded-2xl
+              p-6
+            "
+          >
 
-            <p>✓ Unused Licenses</p>
+            <p className="text-sm text-slate-300">
+              Example Audit
+            </p>
 
-            <p>✓ Duplicate Tools</p>
+            <div className="mt-4">
 
-            <p>✓ Cost Optimization</p>
+              <div className="flex justify-between">
+                <span>Slack</span>
+                <span>₹12,000</span>
+              </div>
+
+              <div className="flex justify-between mt-2">
+                <span>Zoom</span>
+                <span>₹8,500</span>
+              </div>
+
+              <div className="flex justify-between mt-2">
+                <span>HubSpot</span>
+                <span>₹25,000</span>
+              </div>
+
+            </div>
+
+            <div
+              className="
+                mt-6
+                pt-4
+                border-t
+                border-white/10
+              "
+            >
+
+              <p className="text-sm text-slate-300">
+                Potential Savings
+              </p>
+
+              <h3 className="text-3xl font-bold">
+                ₹45,500
+              </h3>
+
+            </div>
 
           </div>
 

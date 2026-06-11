@@ -1,6 +1,15 @@
 import Link from "next/link";
 
-<header className="border-b border-slate-200 bg-pink-50">
+<header
+  className="
+    sticky
+    top-0
+    bg-white/80
+    backdrop-blur
+    border-b
+    border-slate-200
+  "
+>
 
   <div
     className="
@@ -24,34 +33,18 @@ import Link from "next/link";
       SaaScope
     </Link>
 
-    <div className="flex gap-3">
-
-      <Link
-        href="/"
-        className="
-          px-4
-          py-2
-          rounded-lg
-          hover:bg-slate-100
-        "
-      >
-        Home
-      </Link>
-
-      <Link
-        href="/register"
-        className="
-          bg-slate-900
-          text-white
-          px-4
-          py-2
-          rounded-lg
-        "
-      >
-        Get Started
-      </Link>
-
-    </div>
+    <Link
+      href="/register"
+      className="
+        bg-slate-900
+        text-white
+        px-4
+        py-2
+        rounded-lg
+      "
+    >
+      Get Started
+    </Link>
 
   </div>
 

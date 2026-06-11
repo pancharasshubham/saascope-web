@@ -7,7 +7,10 @@ import { useRouter } from "next/navigation";
 
 import { login } from "@/lib/auth";
 import { saveToken } from "@/lib/storage";
+
 import AuthLayout from "@/components/auth-layout";
+
+import { getApiError } from "@/lib/error";
 
 export default function LoginPage() {
 
@@ -48,8 +51,9 @@ export default function LoginPage() {
 
     } catch (error) {
         console.error(error);
+
       alert(
-        "Login failed"
+        getApiError(error)
       );
 
     } finally {
@@ -67,7 +71,7 @@ export default function LoginPage() {
       {/* form */}
         <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col gap-4"
+        className="flex flex-col gap-4"
       >
         <h1 className="text-2xl font-semibold">
           Login
@@ -109,7 +113,8 @@ export default function LoginPage() {
        <p
       className="
         text-center
-        text-sm
+        mt-6
+        text-md
         text-slate-500
       "
     >   

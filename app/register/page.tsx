@@ -10,183 +10,241 @@ import AuthLayout from "@/components/auth-layout";
 
 import { register } from "@/lib/auth";
 
+import {
+getApiError,
+} from "@/lib/error";
+
 export default function RegisterPage() {
 
-  const router =
-    useRouter();
+const router =
+useRouter();
 
-  const [email, setEmail] =
-    useState("");
+const [email, setEmail] =
+useState("");
 
-  const [password, setPassword] =
-    useState("");
+const [password, setPassword] =
+useState("");
 
-  const [loading, setLoading] =
-    useState(false);
+const [loading, setLoading] =
+useState(false);
 
-  async function handleSubmit(
-    e: React.FormEvent
-  ) {
+const [error, setError] =
+useState("");
 
-    e.preventDefault();
+const [success, setSuccess] =
+useState("");
 
-    try {
+async function handleSubmit(
+e: React.FormEvent
+) {
 
-      setLoading(true);
+e.preventDefault();
 
-        await register({
-          email,
-          password,
-        });
+setError("");
 
-      alert(
-        "Account created successfully. Please login."
-      );    
+setSuccess("");
 
-      router.push(
-        "/login"
-      );
+try {
 
-    } catch (error) {
+  setLoading(true);
 
-      console.error(error);
+  await register({
+    email,
+    password,
+  });
 
-      alert(
-        "Registration failed"
-      );
+  setSuccess(
+    "Account created successfully. Redirecting to login..."
+  );
 
-    } finally {
+  setTimeout(() => {
 
-      setLoading(false);
-    }
-  }
+    router.push(
+      "/login"
+    );
 
-  return (
-    <AuthLayout
-      title="Create Account"
-      description="Start finding hidden SaaS costs and optimization opportunities."
+  }, 1200);
+
+} catch (error) {
+
+  console.error(error);
+
+  setError(
+    getApiError(error)
+  );
+
+} finally {
+
+  setLoading(false);
+}
+
+}
+
+return ( <AuthLayout
+   title="Create Account"
+   description="Start finding hidden SaaS costs and optimization opportunities."
+ >
+
+  <form
+    onSubmit={handleSubmit}
+    className="space-y-4"
+  >
+
+    <div>
+
+      <label
+        className="
+          block
+          text-sm
+          font-medium
+          mb-2
+        "
+      >
+        Email
+      </label>
+
+      <input
+        type="email"
+        value={email}
+        onChange={(e) =>
+          setEmail(
+            e.target.value
+          )
+        }
+        className="
+          w-full
+          border
+          border-slate-300
+          rounded-lg
+          px-4
+          py-3
+        "
+        placeholder="john@example.com"
+        required
+      />
+
+    </div>
+
+    <div>
+
+      <label
+        className="
+          block
+          text-sm
+          font-medium
+          mb-2
+        "
+      >
+        Password
+      </label>
+
+      <input
+        type="password"
+        value={password}
+        onChange={(e) =>
+          setPassword(
+            e.target.value
+          )
+        }
+        className="
+          w-full
+          border
+          border-slate-300
+          rounded-lg
+          px-4
+          py-3
+        "
+        placeholder="••••••••"
+        required
+      />
+
+    </div>
+
+    {error && (
+
+      <div
+        className="
+          rounded-lg
+          border
+          border-red-200
+          bg-red-50
+          text-red-700
+          px-4
+          py-3
+          text-sm
+        "
+      >
+        {error}
+      </div>
+
+    )}
+
+    {success && (
+
+      <div
+        className="
+          rounded-lg
+          border
+          border-green-200
+          bg-green-50
+          text-green-700
+          px-4
+          py-3
+          text-sm
+        "
+      >
+        {success}
+      </div>
+
+    )}
+
+    <button
+      type="submit"
+      disabled={loading}
+      className="
+        w-full
+        bg-slate-900
+        text-white
+        rounded-lg
+        py-3
+        font-medium
+        hover:bg-slate-800
+        disabled:opacity-60
+      "
+    >
+      {
+        loading
+          ? "Creating Account..."
+          : "Create Account"
+      }
+    </button>
+
+    <p
+      className="
+        text-center
+        text-sm
+        text-slate-500
+      "
     >
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4"
+      Already have an account?
+
+      <Link
+        href="/login"
+        className="
+          ml-1
+          font-medium
+          text-slate-900
+        "
       >
+        Sign In
+      </Link>
 
-        <div>
+    </p>
 
-          <label
-            className="
-              block
-              text-sm
-              font-medium
-              mb-2
-            "
-          >
-            Email
-          </label>
+  </form>
 
-          <input
-            type="email"
-            value={email}
-            onChange={(e) =>
-              setEmail(
-                e.target.value
-              )
-            }
-            className="
-              w-full
-              border
-              border-slate-300
-              rounded-lg
-              px-4
-              py-3
-            "
-            placeholder="john@example.com"
-            required
-          />
+</AuthLayout>
 
-        </div>
-
-        <div>
-
-          <label
-            className="
-              block
-              text-sm
-              font-medium
-              mb-2
-            "
-          >
-            Password
-          </label>
-
-          <input
-            type="password"
-            value={password}
-            onChange={(e) =>
-              setPassword(
-                e.target.value
-              )
-            }
-            className="
-              w-full
-              border
-              border-slate-300
-              rounded-lg
-              px-4
-              py-3
-            "
-            placeholder="••••••••"
-            required
-          />
-
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="
-            w-full
-            bg-slate-900
-            text-white
-            rounded-lg
-            py-3
-            font-medium
-            hover:bg-slate-800
-          "
-        >
-          {
-            loading
-              ? "Creating Account..."
-              : "Create Account"
-          }
-        </button>
-
-        <p
-          className="
-            text-center
-            text-sm
-            text-slate-500
-          "
-        >
-
-          Already have an account?
-
-          <Link
-            href="/login"
-            className="
-              ml-1
-              font-medium
-              text-slate-900
-            "
-          >
-            Sign In
-          </Link>
-
-        </p>
-
-      </form>
-
-    </AuthLayout>
-  );
+);
 }
