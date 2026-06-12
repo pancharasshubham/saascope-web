@@ -11,6 +11,11 @@ export async function login(
   data: LoginRequest
 ) {
 
+  console.log(
+    "LOGIN BASE URL:",
+    api.defaults.baseURL
+  );
+  
   const response =
     await api.post<AuthResponse>(
       "/auth/login",
