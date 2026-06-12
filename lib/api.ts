@@ -1,29 +1,38 @@
 import axios from "axios";
 
-// export const api = axios.create({
-
-//   baseURL: process.env.NEXT_PUBLIC_API_URL,
-// });
-
-// api.interceptors.request.use((config) => {
-//   if (typeof window !== "undefined") {
-//     const token = localStorage.getItem("token");
-
-//     if (token) {
-//       config.headers.Authorization =
-//         `Bearer ${token}`;
-//     }
-//   }
-
-//   return config;
-// });
-
+const apiUrl =
+  process.env.NEXT_PUBLIC_API_URL;
 
 console.log(
-  "API URL:",
-  process.env.NEXT_PUBLIC_API_URL
+  "API FILE URL:",
+  apiUrl
 );
 
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: apiUrl,
+});
+
+console.log(
+  "AXIOS BASE URL:",
+  api.defaults.baseURL
+);
+
+api.interceptors.request.use((config) => {
+  console.log(
+    "REQUEST URL:",
+    config.baseURL,
+    config.url
+  );
+
+  if (typeof window !== "undefined") {
+    const token =
+      localStorage.getItem("token");
+
+    if (token) {
+      config.headers.Authorization =
+        `Bearer ${token}`;
+    }
+  }
+
+  return config;
 });
